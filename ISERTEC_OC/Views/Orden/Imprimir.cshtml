@@ -1,0 +1,44 @@
+﻿@model CrearOrden
+
+<h2>
+    Orden #: @Model.Encabezado.Id
+</h2>
+
+<p>Fecha: @Model.Encabezado.Fecha</p>
+<p>Fecha Pago: @Model.Encabezado.Fecha_Pago</p>
+
+<p>Proveedor: @Model.Encabezado.Proveedor</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Articulo</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.EncabezadoLista)
+        {
+            <tr>
+                <td>@item.NombreArticulo</td>
+                <td>@item.Cantidad</td>
+                <td>@item.Precio</td>
+                <td>@Math.Round(item.Cantidad *item.Precio,2)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Total Orden: @Model.Encabezado.Costo_De_La_Orden</p>
+<button type="button" class="btn btn-outline-info" onclick="imprimir()">Imprimir</button>
+
+@section Scripts {
+    <script>
+        function imprimir() {
+            window.print();
+        }
+    </script>
+        }

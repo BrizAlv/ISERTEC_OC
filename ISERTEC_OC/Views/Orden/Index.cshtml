@@ -1,0 +1,40 @@
+﻿@model List<OrdenDeCompra>;
+
+<table class="table-striped table" >
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Total de Orden
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var orden in Model)
+        {
+            <tr>
+                <td>
+                    @orden.Id
+                </td>
+                <td>
+                    @orden.Fecha
+                <td>
+                    @orden.Costo_De_La_Orden
+                </td>
+                <td>
+                    <a asp-action="Imprimir" asp-route-id="@orden.Id">Imprimir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-outline-primary" asp-action="Create">Crear Nueva</a>
